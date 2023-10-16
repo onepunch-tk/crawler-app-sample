@@ -15,5 +15,13 @@
   "parser": "@typescript-eslint/parser",
   "rules": {
     "no-debugger": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.ts","*.tsx"],
+      "rules": {
+        "@typescript-eslint/ban-ts-comment": "off"
+      }
+    }
+  ]
 }
