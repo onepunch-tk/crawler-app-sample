@@ -1,2 +1,9 @@
-// See the Electron documentation for details on how to use preload scripts:
-// https://www.electronjs.org/docs/latest/tutorial/process-model#preload-scripts
+import { contextBridge, ipcRenderer } from "electron";
+import { API_ELECTRON, CHANNEL_TEST } from "./utils/ipc/constants";
+
+contextBridge.exposeInMainWorld(API_ELECTRON, {
+  testApi: {
+    getTest: (value: string): Promise<ITestResponse> =>
+      ipcRenderer.invoke(CHANNEL_TEST, value),
+  },
+});

@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html class="dark">
   <head>
     <meta charset="UTF-8" />
     <title>Hello World!</title>
-
+    <meta
+      http-equiv="content-security-policy"
+      content="default-src 'self' 'unsafe-inline';"
+    />
   </head>
-  <body>
-    <h1>💖 Hello World!</h1>
-    <p>Welcome to your Electron application.</p>
+  <body class="bg-amber-400 dark:bg-gray-950">
+    <div id="root"></div>
     <script type="module" src="/src/renderer.ts"></script>
   </body>
 </html>
