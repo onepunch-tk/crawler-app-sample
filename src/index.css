@@ -2,3 +2,41 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+    .dark-theme {
+        @apply bg-gray-900 text-gray-300
+    }
+    .light-theme {
+        @apply bg-gray-200 text-gray-900
+    }
+    .section-bg-dark {
+        @apply bg-gray-800
+    }
+    .section__sub-bg-dark {
+        @apply bg-gray-700
+    }
+    .section-bg-light {
+        @apply bg-white
+    }
+    .section__sub-bg-light {
+        @apply bg-gray-300
+    }
+    .accent-bg-purple {
+        @apply bg-purple-500
+    }
+    .accent-bg-teal {
+        @apply bg-teal-500
+    }
+    .flex-box-col {
+        @apply flex flex-col
+    }
+    .center-axis {
+        @apply justify-center items-center
+    }
+    .shadow-box-dark {
+        @apply shadow-lg shadow-black
+    }
+    .shadow-box-light {
+        @apply shadow-lg shadow-gray-600
+    }
+}
