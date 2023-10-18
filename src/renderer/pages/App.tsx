@@ -18,7 +18,7 @@ export function App() {
           <button className="rounded-xl btn-dark p-5" disabled>
             Test disabled Btn
           </button>
-          <button className="mx-3 rounded-xl btn-dark border-1px p-5">
+          <button className="mx-3 rounded-xl btn-dark border boder-gray p-5">
             border Btn
           </button>
           <button className="m-3 rounded-xl btn-dark shadow-box-dark p-5">
@@ -41,7 +41,7 @@ export function App() {
           <button className="rounded-xl btn-light p-5" disabled>
             Test disabled Btn
           </button>
-          <button className="mx-3 rounded-xl btn-light border-1px p-5">
+          <button className="mx-3 rounded-xl btn-light border border-gray p-5">
             border Btn
           </button>
           <button className="m-3 rounded-xl btn-light shadow-box p-5">

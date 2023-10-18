@@ -7,20 +7,20 @@
     .btn-effect {
         @apply hover:bg-opacity-100 disabled:bg-opacity-40 disabled:text-opacity-50 disabled:cursor-no-drop transition-all duration-[250ms]
     }
-    .border-1px {
-        @apply border border-neutral-500
+    .border-gray {
+        @apply border-neutral-500
     }
 
     /*dark theme*/
     .dark-theme {
-        @apply text-primary-dark bg-neutral-800
+        @apply text-primary-dark bg-neutral-900
     }
     /*text-dark*/
     .text-primary-dark {
-        @apply text-neutral-100
+        @apply text-neutral-300
     }
     .text-secondary-dark {
-        @apply text-neutral-200 text-opacity-50
+        @apply text-neutral-500
     }
     /*box-default-dark*/
     .box-dark-bg {
