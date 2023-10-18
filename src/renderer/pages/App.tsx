@@ -8,21 +8,31 @@ export function App() {
   };
   return (
     <Fragment>
-      <h1>💖 Hello World!</h1>
-      <p>Welcome to your Electron application.</p>
-      <button onClick={getTestHandler}>Get Test</button>
-      <span>{message}</span>
-      <div className="m-4 rounded-xl accent-bg-purple flex-box-col center-axis w-32 h-32 shadow-box-light dark:shadow-box-dark">
-        <span className="text-gray-950 font-bold">hahahah</span>
-      </div>
-      <div className="rounded-xl accent-bg-teal flex center-axis w-32 h-32 shadow-box-light dark:shadow-box-dark">
-        <span className="text-gray-950 font-bold">hahahah</span>
-      </div>
-      <div className="m-4 rounded-xl section-bg-light dark:section-bg-dark flex center-axis w-32 h-32 shadow-box-light dark:shadow-box-dark">
-        <span className="font-bold">hahahah</span>
-      </div>
-      <div className="m-4 rounded-xl section__sub-bg-light dark:section__sub-bg-dark flex center-axis w-32 h-32 shadow-box-light dark:shadow-box-dark">
-        <span className="font-bold">hahahah</span>
+      <div className="grid grid-cols-2">
+        <div>
+          <h1 className="text-primary-dark">💖 Hello World!</h1>
+          <p className="text-secondary-dark">
+            Welcome to your Electron application.
+          </p>
+          <p className="text-disabled-dark">
+            Welcome to your Electron application.
+          </p>
+          <button className="mx-3 rounded-xl btn-dark p-5">Test Btn</button>
+          <button className="rounded-xl btn-dark p-5" disabled>
+            Test disabled Btn
+          </button>
+        </div>
+        <div className="h-[100vh] bg-neutral-50">
+          <h1 className="text-primary">💖 Hello World!</h1>
+          <p className="text-secondary">
+            Welcome to your Electron application.
+          </p>
+          <p className="text-disabled">Welcome to your Electron application.</p>
+          <button className="mx-3 rounded-xl btn-light p-5">Test Btn</button>
+          <button className="rounded-xl btn-light p-5" disabled>
+            Test disabled Btn
+          </button>
+        </div>
       </div>
     </Fragment>
   );

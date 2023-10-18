@@ -3,40 +3,56 @@
 @tailwind utilities;
 
 @layer components {
+    /*dark theme*/
+    /*text*/
+    .text-primary-dark {
+        @apply text-neutral-100
+    }
+    .text-secondary-dark {
+        @apply text-neutral-500 text-opacity-70
+    }
+    .text-disabled-dark {
+        @apply text-neutral-500 text-opacity-50
+    }
+    /*button default*/
+    .btn-dark__hover {
+        @apply text-white text-opacity-30
+    }
+    .btn-dark__disabled {
+        @apply text-disabled-dark bg-white bg-opacity-[0.12]
+    }
+    .btn-dark {
+        @apply bg-neutral-700 text-primary-dark hover:btn-dark__hover disabled:btn-dark__disabled
+    }
     .dark-theme {
-        @apply bg-gray-900 text-gray-300
+        @apply text-primary-dark bg-neutral-900
     }
+
+    /*light theme*/
+    /*text*/
+    .text-primary {
+        @apply text-neutral-950
+    }
+    .text-secondary {
+        @apply text-neutral-950 text-opacity-60
+    }
+    .text-disabled {
+        @apply text-neutral-950 text-opacity-40
+    }
+
+    /*button default*/
+    .btn-light__hover {
+        @apply text-primary text-opacity-[0.5]
+    }
+    .btn-light__disabled {
+        @apply text-disabled bg-neutral-950 bg-opacity-[0.2]
+    }
+    .btn-light {
+        @apply bg-neutral-300 text-primary hover:btn-light__hover disabled:btn-light__disabled
+    }
+
     .light-theme {
-        @apply bg-gray-200 text-gray-900
-    }
-    .section-bg-dark {
-        @apply bg-gray-800
-    }
-    .section__sub-bg-dark {
-        @apply bg-gray-700
-    }
-    .section-bg-light {
-        @apply bg-white
-    }
-    .section__sub-bg-light {
-        @apply bg-gray-300
-    }
-    .accent-bg-purple {
-        @apply bg-purple-500
-    }
-    .accent-bg-teal {
-        @apply bg-teal-500
-    }
-    .flex-box-col {
-        @apply flex flex-col
-    }
-    .center-axis {
-        @apply justify-center items-center
-    }
-    .shadow-box-dark {
-        @apply shadow-lg shadow-black
-    }
-    .shadow-box-light {
-        @apply shadow-lg shadow-gray-600
+        @apply bg-neutral-50 text-primary
     }
 }
+
