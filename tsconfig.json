@@ -11,9 +11,10 @@
     "paths": {
       "@/*": ["src/*"],
       "@utils/*": ["src/utils/*"],
+      "@recoil/*": ["src/utils/recoil/*"],
       "@renderer/*": ["src/renderer/*"],
       "@pages/*": ["src/renderer/pages/*"],
-      "@components/*": ["src/renderer/components/*"]
+      "@components/*": ["src/renderer/components/*"],
     },
     "outDir": "dist",
     "moduleResolution": "node",

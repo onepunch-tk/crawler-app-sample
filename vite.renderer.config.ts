@@ -10,6 +10,7 @@ export default defineConfig({
       "@pages": path.resolve(__dirname, "./src/renderer/pages"),
       "@components": path.resolve(__dirname, "./src/renderer/components"),
       "@utils": path.resolve(__dirname, "./src/utils"),
+      "@recoil": path.resolve(__dirname, "./src/utils/recoil"),
     },
   },
 });
