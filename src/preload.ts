@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from "electron";
-import { API_ELECTRON, CHANNEL_TEST } from "./utils/ipc/constants";
+import { API_ELECTRON, CHANNEL_TEST } from "@/utils/ipc/constants";
 
 contextBridge.exposeInMainWorld(API_ELECTRON, {
   testApi: {

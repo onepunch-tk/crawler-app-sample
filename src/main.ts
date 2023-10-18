@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import path from "path";
-import { CHANNEL_TEST } from "./utils/ipc/constants";
-import { getTestHandler } from "./utils/ipc/handlers";
+import { CHANNEL_TEST } from "@utils/ipc/constants";
+import { getTestHandler } from "@utils/ipc/handlers";
 
 if (require("electron-squirrel-startup")) {
   app.quit();

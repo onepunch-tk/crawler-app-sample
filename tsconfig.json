@@ -8,10 +8,18 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"],
+      "@utils/*": ["src/utils/*"],
+      "@renderer/*": ["src/renderer/*"],
+      "@pages/*": ["src/renderer/pages/*"],
+      "@components/*": ["src/renderer/components/*"]
+    },
     "outDir": "dist",
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"]
+  "include": ["src"],
 }
+

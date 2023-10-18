@@ -23,5 +23,10 @@
         "@typescript-eslint/ban-ts-comment": "off"
       }
     }
-  ]
+  ],
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
+    }
+  }
 }
