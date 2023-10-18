@@ -9,6 +9,7 @@ export default defineConfig({
       "@renderer": path.resolve(__dirname, "./src/renderer"),
       "@pages": path.resolve(__dirname, "./src/renderer/pages"),
       "@components": path.resolve(__dirname, "./src/renderer/components"),
+      "@utils": path.resolve(__dirname, "./src/utils"),
     },
   },
 });

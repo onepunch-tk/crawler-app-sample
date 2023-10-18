@@ -10,6 +10,9 @@
     .border-gray {
         @apply border-neutral-500
     }
+    .flex-box-col-center {
+        @apply flex flex-col justify-center items-center
+    }
 
     /*dark theme*/
     .dark-theme {
@@ -44,7 +47,7 @@
         @apply text-neutral-950
     }
     .text-secondary {
-        @apply text-neutral-900 text-opacity-70
+        @apply text-neutral-500
     }
     /*box-default-light*/
     .box-light-bg {

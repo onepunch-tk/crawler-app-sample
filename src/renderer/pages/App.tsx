@@ -1,11 +1,18 @@
 import { Fragment, useState } from "react";
+import { Loading } from "@components/Loading";
 
 export function App() {
   const [message, setMessage] = useState("");
+  const [connected, setConnected] = useState(true);
   const getTestHandler = async () => {
     const { message: returnMessage } = await electron.testApi.getTest("");
     setMessage(returnMessage);
   };
+
+  if (!connected) {
+    return <Loading />;
+  }
+
   return (
     <Fragment>
       <div className="grid grid-cols-2">
@@ -36,7 +43,6 @@ export function App() {
           <p className="text-secondary">
             Welcome to your Electron application.
           </p>
-          <p className="text-disabled">Welcome to your Electron application.</p>
           <button className="mx-3 rounded-xl btn-light p-5">Test Btn</button>
           <button className="rounded-xl btn-light p-5" disabled>
             Test disabled Btn
