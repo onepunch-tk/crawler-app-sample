@@ -14,9 +14,6 @@ export function App() {
           <p className="text-secondary-dark">
             Welcome to your Electron application.
           </p>
-          <p className="text-disabled-dark">
-            Welcome to your Electron application.
-          </p>
           <button className="mx-3 rounded-xl btn-dark p-5">Test Btn</button>
           <button className="rounded-xl btn-dark p-5" disabled>
             Test disabled Btn

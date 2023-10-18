@@ -4,93 +4,77 @@
 
 @layer components {
     /*common*/
-    .text-hover {
-        @apply text-opacity-50 transition-all duration-[250ms]
+    .btn-effect {
+        @apply hover:bg-opacity-100 disabled:bg-opacity-40 disabled:text-opacity-50 disabled:cursor-no-drop transition-all duration-[250ms]
     }
-
-    /*dark theme*/
-    /*text*/
-    .text-primary-dark {
-        @apply text-neutral-100
-    }
-    .text-secondary-dark {
-        @apply text-neutral-400 text-opacity-70
-    }
-    .text-disabled-dark {
-        @apply text-neutral-400 text-opacity-50
-    }
-    /*box default*/
-    .box-dark-bg {
-        @apply bg-neutral-700
-    }
-    .box-dark__disabled {
-        @apply text-disabled-dark bg-white bg-opacity-[0.12]
-    }
-    .btn-dark {
-        @apply box-dark-bg text-primary-dark hover:text-hover disabled:box-dark__disabled
-    }
-    .dark-theme {
-        @apply text-primary-dark bg-neutral-800
-    }
-    .shadow-box-dark {
-        @apply shadow-black shadow-md
-    }
-
-    /*light theme*/
-    /*text*/
-    .text-primary {
-        @apply text-neutral-950
-    }
-    .text-secondary {
-        @apply text-neutral-950 text-opacity-60
-    }
-    .text-disabled {
-        @apply text-neutral-950 text-opacity-40
-    }
-
-    /*button default*/
-    .box-light-bg {
-        @apply bg-neutral-200
-    }
-    .box-light__disabled {
-        @apply text-disabled bg-neutral-700 bg-opacity-[0.2]
-    }
-    .btn-light {
-        @apply box-light-bg text-primary hover:text-hover disabled:box-light__disabled
-    }
-
-    .light-theme {
-        @apply bg-neutral-50 text-primary
-    }
-    .shadow-box {
-        @apply shadow-neutral-400 shadow-md
-    }
-
-    /*border default*/
     .border-1px {
         @apply border border-neutral-500
     }
 
+    /*dark theme*/
+    .dark-theme {
+        @apply text-primary-dark bg-neutral-800
+    }
+    /*text-dark*/
+    .text-primary-dark {
+        @apply text-neutral-100
+    }
+    .text-secondary-dark {
+        @apply text-neutral-200 text-opacity-50
+    }
+    /*box-default-dark*/
+    .box-dark-bg {
+        @apply bg-neutral-700 bg-opacity-70
+    }
+    .shadow-box-dark {
+        @apply shadow-black shadow-md
+    }
+    /*btn-dark*/
+    .btn-dark {
+        @apply box-dark-bg text-primary-dark btn-effect
+    }
+
+
+    /*light theme*/
+    .light-theme {
+        @apply bg-neutral-50 text-primary
+    }
+    /*text-light*/
+    .text-primary {
+        @apply text-neutral-950
+    }
+    .text-secondary {
+        @apply text-neutral-900 text-opacity-70
+    }
+    /*box-default-light*/
+    .box-light-bg {
+        @apply bg-neutral-400 bg-opacity-70
+    }
+    .shadow-box {
+        @apply shadow-neutral-400 shadow-md
+    }
+    /*button-light*/
+    .btn-light {
+        @apply box-light-bg text-primary btn-effect
+    }
+
     /*accent bg*/
     .accent-bg-vio {
-        @apply bg-violet-500 bg-opacity-75
+        @apply bg-violet-600 bg-opacity-70
     }
     .accent-bg-teal {
-        @apply bg-teal-500 bg-opacity-80
+        @apply bg-teal-600 bg-opacity-70
     }
 
     /*accent button*/
-    .accent-btn-effect {
-        @apply hover:text-hover disabled:text-opacity-50 disabled:bg-opacity-50
-    }
     .accent-btn-common {
-        @apply text-primary accent-btn-effect
+        @apply text-primary btn-effect
     }
     .accent-btn-vio {
         @apply accent-bg-vio accent-btn-common
     }
     .accent-btn-teal {
-        @apply accent-bg-teal accent-btn-common box-border
+        @apply accent-bg-teal accent-btn-common
     }
 }
 
