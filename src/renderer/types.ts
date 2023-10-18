@@ -5,3 +5,8 @@ export type SpinBorderColorType =
   | "border-violet-600"
   | "border-blue-600"
   | undefined;
+
+export type SvgContainerSizeType = {
+  w?: "w-5" | "w-6" | "w-7" | "w-8";
+  h?: "h-5" | "h-6" | "h-7" | "h-8";
+};

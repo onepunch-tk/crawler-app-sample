@@ -16,7 +16,7 @@
 
     /*dark theme*/
     .dark-theme {
-        @apply text-primary-dark bg-neutral-900
+        @apply text-primary-dark bg-neutral-900 transition-colors duration-500
     }
     /*text-dark*/
     .text-primary-dark {
@@ -40,7 +40,7 @@
 
     /*light theme*/
     .light-theme {
-        @apply bg-neutral-50 text-primary
+        @apply bg-neutral-50 text-primary transition-colors duration-500
     }
     /*text-light*/
     .text-primary {
