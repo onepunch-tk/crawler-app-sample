@@ -1,26 +1,25 @@
 import { AtomEffect } from "recoil";
-import { ThemeType } from "@recoil/theme/types";
+import { ETheme, setClassTheme, ThemeType } from "@recoil/theme/common";
 
 export const themeEffect: AtomEffect<ThemeType> = ({ setSelf, onSet }) => {
-  const savedData = localStorage.getItem("theme");
+  /*init Data*/
+  const savedData = localStorage.getItem(ETheme.KEY);
   if (savedData) {
-    setSelf(savedData as ThemeType);
-    savedData === "dark"
-      ? document.documentElement.classList.add(savedData)
-      : document.documentElement.classList.remove("dark");
+    const setTheme = savedData === ETheme.DARK ? ETheme.DARK : ETheme.LIGHT;
+    setSelf(setTheme);
+    setClassTheme(setTheme);
   } else {
-    setSelf("dark");
-    localStorage.setItem("theme", "dark");
-    document.documentElement.classList.add("dark");
+    setSelf(ETheme.DARK);
+    document.documentElement.classList.add(ETheme.DARK);
+    localStorage.setItem(ETheme.KEY, ETheme.DARK);
   }
 
-  onSet((newValue, _, isReset) => {
+  /*state change event*/
+  onSet((newTheme, _, isReset) => {
     isReset
-      ? localStorage.removeItem("theme")
-      : localStorage.setItem("theme", newValue);
+      ? localStorage.removeItem(ETheme.KEY)
+      : localStorage.setItem(ETheme.KEY, newTheme);
 
-    newValue === "dark"
-      ? document.documentElement.classList.add(newValue)
-      : document.documentElement.classList.remove("dark");
+    setClassTheme(newTheme);
   });
 };

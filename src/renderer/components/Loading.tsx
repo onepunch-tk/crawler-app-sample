@@ -27,11 +27,13 @@ export function Loading({
       <main className="fixed flex-box-col-center w-full h-full box-light-bg dark:box-dark-bg bg-opacity-60">
         <section
           className={cls(
-            "loading-container flex-box-col-center w-72 rounded-xl gap-y-6 p-10 bg-red-500 shadow-box dark:shadow-box-dark",
+            "loading-container flex-box-col-center min-w-[350px] max-w-fit rounded-xl gap-y-6 p-10 shadow-box dark:shadow-box-dark",
             containerBg
           )}
         >
-          <span className="loading-message font-bold">{message}</span>
+          <span className="loading-message text-neutral-900 font-bold">
+            {message}
+          </span>
           <Spinner w={w} h={h} borderColor={borderColor} />
         </section>
       </main>

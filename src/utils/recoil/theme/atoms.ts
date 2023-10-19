@@ -1,6 +1,6 @@
 import { atom } from "recoil";
-import { ThemeType } from "@recoil/theme/types";
 import { themeEffect } from "@recoil/theme/themeEffect";
+import { ThemeType } from "@recoil/theme/common";
 
 export const themeState = atom<ThemeType>({
   key: "themeState",
