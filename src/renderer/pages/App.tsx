@@ -15,10 +15,7 @@ export function App() {
   }
   return (
     <Fragment>
-      <main className="mt-10">
-        <h1>Hello World</h1>
-        <h1>Hello World</h1>
-      </main>
+      <main className="mt-10"></main>
     </Fragment>
   );
 }

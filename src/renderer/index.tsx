@@ -1,11 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { RecoilRoot } from "recoil";
 import { RouterProvider } from "react-router-dom";
-import router from "@routes/index";
+import { router } from "@routes/RootContainer";
 
-document.body.innerHTML = '<div id="root"></div>';
-
-const root = createRoot(document.getElementById("root"));
+const domNode = document.getElementById("root");
+const root = createRoot(domNode);
 root.render(
   <RecoilRoot>
     <RouterProvider router={router} />

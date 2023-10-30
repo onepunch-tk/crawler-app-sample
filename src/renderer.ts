@@ -1,2 +1,2 @@
 import "@/index.css";
-import "@renderer/index";
+import "@renderer/index.tsx";
