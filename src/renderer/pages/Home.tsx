@@ -2,8 +2,9 @@ import { Fragment } from "react";
 import { useRecoilValue } from "recoil";
 import { onlineState } from "@recoil/online/atoms";
 import { Loading } from "@components/Loading";
+import { Outlet } from "react-router-dom";
 
-export function App() {
+export function Home() {
   const connected = useRecoilValue(onlineState);
   if (!connected) {
     return (
@@ -15,7 +16,9 @@ export function App() {
   }
   return (
     <Fragment>
-      <main className="mt-10"></main>
+      <main className="mt-12">
+        <Outlet />
+      </main>
     </Fragment>
   );
 }

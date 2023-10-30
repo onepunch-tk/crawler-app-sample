@@ -1,12 +1,11 @@
 import { Outlet } from "react-router-dom";
-import { NavBar } from "@components/NavBar";
+import { Navbar } from "@components/Navbar";
 import { Fragment } from "react";
 
 export function Root() {
-  console.log("root");
   return (
     <Fragment>
-      <NavBar />
+      <Navbar />
       <Outlet />
     </Fragment>
   );

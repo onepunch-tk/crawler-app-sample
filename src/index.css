@@ -5,7 +5,7 @@
 @layer components {
     /*common*/
     .btn-effect {
-        @apply hover:bg-opacity-100 disabled:bg-opacity-40 disabled:text-opacity-50 disabled:cursor-no-drop transition-all duration-[250ms]
+        @apply hover:bg-opacity-100 disabled:bg-opacity-40 disabled:text-opacity-50 disabled:cursor-no-drop transition-all duration-300
     }
     .border-gray {
         @apply border-neutral-500
@@ -30,7 +30,7 @@
         @apply bg-neutral-700 bg-opacity-70
     }
     .shadow-box-dark {
-        @apply shadow-black shadow-md
+        @apply shadow-neutral-950 shadow-md
     }
     /*btn-dark*/
     .btn-dark {
@@ -80,4 +80,5 @@
         @apply accent-bg-teal accent-btn-common
     }
 }
+
 

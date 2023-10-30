@@ -1,5 +1,5 @@
-import { SunSvg } from "@components/SunSvg";
-import { MoonSvg } from "@components/MoonSvg";
+import { SunSvg } from "@components/svgs/SunSvg";
+import { MoonSvg } from "@components/svgs/MoonSvg";
 import { useRecoilState } from "recoil";
 import { themeState } from "@recoil/theme/atoms";
 import { ChangeEvent } from "react";
