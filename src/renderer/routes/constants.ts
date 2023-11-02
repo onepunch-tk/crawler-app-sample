@@ -5,3 +5,7 @@ export enum HOME_ROUTES {
   COUPANG = "coupang",
   NAVER = "naver",
 }
+
+export enum INSTAGRAM_ROUTES {
+  SEARCH = "search",
+}

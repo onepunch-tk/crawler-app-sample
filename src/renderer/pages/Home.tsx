@@ -16,7 +16,7 @@ export function Home() {
   }
   return (
     <Fragment>
-      <main className="mt-12">
+      <main className="mt-12 main-height">
         <Outlet />
       </main>
     </Fragment>

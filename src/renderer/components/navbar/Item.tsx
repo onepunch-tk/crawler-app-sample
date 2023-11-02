@@ -3,12 +3,12 @@ import { HOME_ROUTES } from "@routes/constants";
 import { YoutubeSvg } from "@components/svgs/YoutubeSvg";
 import { CoupangSvg } from "@components/svgs/CoupangSvg";
 import { NaverSvg } from "@components/svgs/NaverSvg";
-import { PathMatch, useMatch, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { cls } from "@utils/classnames";
 
 type SvgProps = {
   route: HOME_ROUTES;
-  isMatch: PathMatch<string>;
+  isMatch: boolean;
 };
 function Svg({ route, isMatch }: SvgProps) {
   const classname = cls(
@@ -34,7 +34,7 @@ type NavbarItemProps = {
   title: string;
 };
 export function Item({ route, title }: NavbarItemProps) {
-  const isMatch = useMatch(`${HOME_ROUTES.HOME}/${route}`);
+  const isMatch = useLocation().pathname.includes(`${route}`);
   const navigate = useNavigate();
   const onClickHandler = () => {
     navigate(`${HOME_ROUTES.HOME}/${route}`);
@@ -50,7 +50,7 @@ export function Item({ route, title }: NavbarItemProps) {
       <Svg route={route} isMatch={isMatch} />
       <span
         className={cls(
-          "ml-1 group-hover:text-amber-500 group-hover:transition-colors group-hover:duration-700 font-bold",
+          "ml-1 hidden sm:hidden md:inline md:text-sm group-hover:text-amber-500 group-hover:transition-colors group-hover:duration-700 font-bold",
           isMatch ? "text-amber-500" : ""
         )}
       >

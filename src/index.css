@@ -13,6 +13,10 @@
     .flex-box-col-center {
         @apply flex flex-col justify-center items-center
     }
+    .main-height {
+        --mt-value:calc(100vh - 3rem);
+        height: var(--mt-value);
+    }
 
     /*dark theme*/
     .dark-theme {
