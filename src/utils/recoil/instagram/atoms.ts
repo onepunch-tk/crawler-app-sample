@@ -4,7 +4,7 @@ type InstagramAuthType = {
   id: string;
   password: string;
 };
-const InstagramAuthKey = "istaAuth";
+const InstagramAuthKey = "instaAuth";
 export const instagramAuthState = atom<InstagramAuthType>({
   key: "instagramAuthState",
   default: JSON.parse(localStorage.getItem(InstagramAuthKey)),

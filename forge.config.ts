@@ -27,10 +27,6 @@ const config: ForgeConfig = {
           config: "vite.main.config.ts",
         },
         {
-          entry: "src/utils/puppeteer/worker.ts",
-          config: "vite.main.config.ts",
-        },
-        {
           entry: "src/preload.ts",
           config: "vite.preload.config.ts",
         },

@@ -12,6 +12,7 @@
       "@/*": ["src/*"],
       "@utils/*": ["src/utils/*"],
       "@puppeteer/*": ["src/utils/puppeteer/*"],
+      "@handlers/*": ["src/utils/ipc/handlers/*"],
       "@recoil/*": ["src/utils/recoil/*"],
       "@renderer/*": ["src/renderer/*"],
       "@pages/*": ["src/renderer/pages/*"],

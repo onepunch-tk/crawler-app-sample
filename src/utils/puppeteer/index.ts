@@ -1,10 +1,12 @@
 import puppeteer from "puppeteer-extra";
 import StealthPlugin from "puppeteer-extra-plugin-stealth";
 import AnonymizeUAPlugin from "puppeteer-extra-plugin-anonymize-ua";
+/*electron에서는 adblocker 플러그인이 로드시 에러를 뱉는다. 해결방법으로는 파일을 수동으로 핸들링해서 사용한다.*/
+/*resolve vite.main.config 에서 사전에 로드한다. */
 import AdBlockerPlugin from "puppeteer-extra-plugin-adblocker";
 import BlockResourcePlugin from "puppeteer-extra-plugin-block-resources";
-import path from "path";
 import { Browser, Permission, ResourceType } from "puppeteer";
+import path from "path";
 
 type ChromiumCommandType =
   | "--disable-gpu"
@@ -18,7 +20,7 @@ type HeadlessType = "new" | true | false;
 type UserDataDirType = "insta" | "ytb" | "coupang" | "naver";
 type BrowserProps = {
   headless: HeadlessType;
-  args: ChromiumCommandType[];
+  commands: ChromiumCommandType[];
   dirName: UserDataDirType;
   blockResources: ResourceType[];
   permission?: {
@@ -28,7 +30,7 @@ type BrowserProps = {
 };
 const createBrowser = async ({
   headless,
-  args,
+  commands,
   dirName,
   blockResources,
   permission,
@@ -45,11 +47,13 @@ const createBrowser = async ({
   blockResources.forEach((blockType) => {
     blockResourcePlugin.blockedTypes.add(blockType);
   });
-
+  const args = [
+    ...commands,
+    `--user-data-dir=${path.join(__dirname, `${dirName}-user-data-dir`)}`,
+  ];
   const browser = await puppeteer.launch({
     headless,
     args,
-    userDataDir: path.join(__dirname, `${dirName}-user-data-dir`),
     protocolTimeout: 240000,
   });
 
@@ -73,4 +77,7 @@ const getPage = async (browser: Browser, headless: HeadlessType) => {
   return page;
 };
 
-export { createBrowser, getPage };
+const waitFor = async (ms: number) =>
+  new Promise((resolve) => setTimeout(resolve, ms));
+
+export { createBrowser, getPage, waitFor };

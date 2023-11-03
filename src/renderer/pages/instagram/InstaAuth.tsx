@@ -15,6 +15,15 @@ export function InstaAuth() {
   const [password, setPassword] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const setInstaAuth = useSetRecoilState(instagramAuthState);
+  const onSignInHandler = async () => {
+    if (!id) return;
+    if (!password) return;
+    setLoading(true);
+    const result = await electron.instagramApi.signIn({ id, password });
+    //setInstaAuth({ id, password });
+    console.log(result);
+    setTimeout(() => setLoading(false), 2000);
+  };
   return (
     <CardWrapper>
       <CardTitle title="Instagram Sign In" />
@@ -42,13 +51,7 @@ export function InstaAuth() {
       </CardInputWrapper>
       <CardSubmit
         loading={loading}
-        onSubmitHandler={() => {
-          if (!id) return;
-          if (!password) return;
-          setLoading(true);
-          setInstaAuth({ id, password });
-          setTimeout(() => setLoading(false), 2000);
-        }}
+        onSubmitHandler={onSignInHandler}
         content="Sign in"
         subContent="Loading..."
       />

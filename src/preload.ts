@@ -1,9 +1,9 @@
 import { contextBridge, ipcRenderer } from "electron";
-import { API_ELECTRON, CHANNEL_TEST } from "@/utils/ipc/constants";
+import { API_ELECTRON, CHANNEL_INSTAGRAM_SIGNIN } from "@/utils/ipc/constants";
 
 contextBridge.exposeInMainWorld(API_ELECTRON, {
-  testApi: {
-    getTest: (value: string): Promise<ITestResponse> =>
-      ipcRenderer.invoke(CHANNEL_TEST, value),
+  instagramApi: {
+    signIn: (auth: SignInType): Promise<InstagramDefaultResponse> =>
+      ipcRenderer.invoke(CHANNEL_INSTAGRAM_SIGNIN, auth),
   },
 });

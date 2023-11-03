@@ -1,6 +1,6 @@
 type Electron = {
-  testApi: {
-    getTest: (value: string) => Promise<ITestResponse>;
+  instagramApi: {
+    signIn: (auth: SignInType) => Promise<InstagramDefaultResponse>;
   };
 };
 
