@@ -33,7 +33,7 @@ type NavbarItemProps = {
   route: HOME_ROUTES;
   title: string;
 };
-export function Item({ route, title }: NavbarItemProps) {
+export function MunuItem({ route, title }: NavbarItemProps) {
   const isMatch = useLocation().pathname.includes(`${route}`);
   const navigate = useNavigate();
   const onClickHandler = () => {
