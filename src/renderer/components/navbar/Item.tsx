@@ -37,7 +37,7 @@ export function Item({ route, title }: NavbarItemProps) {
   const isMatch = useLocation().pathname.includes(`${route}`);
   const navigate = useNavigate();
   const onClickHandler = () => {
-    navigate(`${HOME_ROUTES.HOME}/${route}`);
+    navigate(`/${route}`);
   };
   return (
     <div
