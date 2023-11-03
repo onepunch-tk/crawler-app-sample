@@ -27,7 +27,7 @@
         @apply text-neutral-300
     }
     .text-secondary-dark {
-        @apply text-neutral-500
+        @apply text-neutral-400
     }
     /*box-default-dark*/
     .box-dark-bg {
@@ -51,7 +51,7 @@
         @apply text-neutral-950
     }
     .text-secondary {
-        @apply text-neutral-500
+        @apply text-neutral-600
     }
     /*box-default-light*/
     .box-light-bg {
