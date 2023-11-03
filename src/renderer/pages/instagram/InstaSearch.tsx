@@ -4,6 +4,7 @@ import {
   CardInputTitle,
   CardInputWrapper,
   CardSelect,
+  CardSubmit,
   CardTitle,
   CardWrapper,
   ITemType,
@@ -18,9 +19,9 @@ const pageList: ITemType[] = [
 ];
 
 export function InstaSearch() {
-  const [selectedPage, setSelectedPage] = useState<ITemType>(pageList[0]);
+  const [pageCount, setPageCount] = useState<ITemType>(pageList[0]);
   const [hashtag, setHashtag] = useState<string>("");
-
+  const [loading, setLoading] = useState<boolean>(false);
   const onHashtagInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const hashtagText = e.currentTarget.value;
     if (hashtagText.includes("#")) {
@@ -45,11 +46,21 @@ export function InstaSearch() {
       <CardInputWrapper>
         <CardInputTitle inputTitle="페이지 수" />
         <CardSelect
-          selectedItem={selectedPage}
+          selectedItem={pageCount}
           itemList={pageList}
-          onSelectedHandler={setSelectedPage}
+          onSelectedHandler={setPageCount}
         />
       </CardInputWrapper>
+      <CardSubmit
+        loading={loading}
+        onSubmitHandler={() => {
+          setLoading(true);
+          console.log(pageCount);
+          setTimeout(() => setLoading(false), 2000);
+        }}
+        content="스크래핑 시작"
+        subContent="Loading..."
+      />
     </CardWrapper>
   );
 }

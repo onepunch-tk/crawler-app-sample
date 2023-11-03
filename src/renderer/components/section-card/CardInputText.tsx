@@ -3,6 +3,7 @@ import React, {
   Fragment,
   HTMLInputTypeAttribute,
 } from "react";
+import { cls } from "@utils/classnames";
 
 type CardInputProps = {
   onChangeHandler: ChangeEventHandler;
@@ -33,7 +34,10 @@ export function CardInputText({
           placeholder={placeholder}
           onFocus={(e) => (e.currentTarget.placeholder = "")}
           onBlur={(e) => (e.currentTarget.placeholder = placeholder)}
-          className="pl-3 placeholder-neutral-500 placeholder:opacity-60 bg-transparent focus:outline-0 box-border border-b dark:border-b-[0.5px] focus:border-b-2 dark:focus:border-b border-amber-600 dark:border-amber-500 text-sm"
+          className={cls(
+            "w-52 placeholder-neutral-500 placeholder:text-center placeholder:opacity-60 bg-transparent focus:outline-0 box-border border-b dark:border-b-[0.5px] focus:border-b-2 dark:focus:border-b border-amber-600 dark:border-amber-500 text-sm",
+            symbol ? "pl-3" : ""
+          )}
         />
       </div>
     </Fragment>

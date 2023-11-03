@@ -11,6 +11,7 @@
     "paths": {
       "@/*": ["src/*"],
       "@utils/*": ["src/utils/*"],
+      "@puppeteer/*": ["src/utils/puppeteer/*"],
       "@recoil/*": ["src/utils/recoil/*"],
       "@renderer/*": ["src/renderer/*"],
       "@pages/*": ["src/renderer/pages/*"],

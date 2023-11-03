@@ -4479,6 +4479,22 @@ puppeteer-extra-plugin-adblocker@^2.13.6:
     node-fetch "^2.6.0"
     puppeteer-extra-plugin "^3.2.3"
 
+puppeteer-extra-plugin-anonymize-ua@^2.4.6:
+  version "2.4.6"
+  resolved "https://registry.npmjs.org/puppeteer-extra-plugin-anonymize-ua/-/puppeteer-extra-plugin-anonymize-ua-2.4.6.tgz"
+  integrity sha512-EasOjKpPYFn72Yk7/RXM2q/CDrdPzjTnx8GfHPrwVmhcnh8Ull1DnONP73KZFF2bdwhitaQ3zRZ0yI1yFM2rzQ==
+  dependencies:
+    debug "^4.1.1"
+    puppeteer-extra-plugin "^3.2.3"
+
+puppeteer-extra-plugin-block-resources@^2.4.3:
+  version "2.4.3"
+  resolved "https://registry.npmjs.org/puppeteer-extra-plugin-block-resources/-/puppeteer-extra-plugin-block-resources-2.4.3.tgz"
+  integrity sha512-WLxkytm3Nn6D+3N8lFMIi9lL9lLA1mTRHZAflR+zDs9/d1oOYVy52pWPaiQaetOObgfHDpPlHBmzHE2Yhr3ZnQ==
+  dependencies:
+    debug "^4.1.1"
+    puppeteer-extra-plugin "^3.2.3"
+
 puppeteer-extra-plugin-recaptcha@^3.6.8:
   version "3.6.8"
   resolved "https://registry.npmjs.org/puppeteer-extra-plugin-recaptcha/-/puppeteer-extra-plugin-recaptcha-3.6.8.tgz"

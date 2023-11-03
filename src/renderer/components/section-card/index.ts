@@ -2,6 +2,7 @@ import { CardInputText } from "./CardInputText";
 import { CardInputTitle } from "./CardInputTitle";
 import { CardInputWrapper } from "./CardInputWrapper";
 import { CardSelect } from "./CardSelect";
+import { CardSubmit } from "./CardSubmit";
 import { CardTitle } from "./CardTitle";
 import { CardWrapper } from "./CardWrapper";
 
@@ -17,5 +18,6 @@ export {
   CardInputText,
   CardInputTitle,
   CardSelect,
+  CardSubmit,
   ITemType,
 };

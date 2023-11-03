@@ -49,6 +49,8 @@
     "puppeteer": "^21.2.1",
     "puppeteer-extra": "^3.3.6",
     "puppeteer-extra-plugin-adblocker": "^2.13.6",
+    "puppeteer-extra-plugin-anonymize-ua": "^2.4.6",
+    "puppeteer-extra-plugin-block-resources": "^2.4.3",
     "puppeteer-extra-plugin-recaptcha": "^3.6.8",
     "puppeteer-extra-plugin-stealth": "^2.11.2",
     "react": "^18.2.0",
