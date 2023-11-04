@@ -63,7 +63,6 @@ export const instagramSignIn = async (
         { timeout: 3000 }
       )
     ).json()) as InstagramSignInResponse;
-    console.log(response);
     await page.close();
     await browser.close();
     return response;
