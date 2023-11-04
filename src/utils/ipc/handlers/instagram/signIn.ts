@@ -1,13 +1,19 @@
-import { createBrowser, getPage, waitFor } from "@utils/puppeteer";
-import { BAD_REQUEST, SUCCESS, UNAUTHORIZED } from "@utils/ipc/constants";
+import {
+  createBrowser,
+  getPage,
+  waitFor,
+  waitForSelectorOrNull,
+} from "@utils/puppeteer";
 
+const signInFormSelector = "form#loginForm";
 const idInputSelector = "input[name=username]";
 const passwordInputSelector = "input[name=password]";
-const signInBtnSelector = "form#loginForm button[type=submit]";
+const signInBtnSelector = "button[type=submit]";
+
 export const instagramSignIn = async (
   e: Electron.IpcMainInvokeEvent,
   auth: SignInType
-): Promise<InstagramDefaultResponse> => {
+): Promise<InstagramSignInResponse> => {
   try {
     const browser = await createBrowser({
       headless: false,
@@ -23,42 +29,45 @@ export const instagramSignIn = async (
     });
     const page = await getPage(browser, false);
     await page.goto("https://www.instagram.com/");
-    const idInputHandler = await page.waitForSelector(idInputSelector, {
-      timeout: 2000,
-    });
-    const passwordInputHandler = await page.waitForSelector(
-      passwordInputSelector,
-      { timeout: 2000 }
-    );
-    if (idInputHandler && passwordInputHandler) {
-      for (const char of auth.id.split("")) {
-        await idInputHandler.type(char);
-        await waitFor(50);
-      }
-      for (const char of auth.password.split("")) {
-        await passwordInputHandler.type(char);
-        await waitFor(50);
-      }
 
-      await page.click(signInBtnSelector);
-      await waitFor(2000);
-      const incorrectAccountEl = await page.$("._ab2z");
-      if (incorrectAccountEl) {
-        await page.close();
-        await browser.close();
-        return {
-          status: UNAUTHORIZED,
-          error: "아이디와 패스워드를 확인하세요.",
-        };
-      }
-    }
-    await page.waitForResponse(
-      (res) => res.url().includes("instagram/main") && res.status() === 200
+    /*main page에서 로그인 form이 존재 여부 확인*/
+    const signInFormHandler = await waitForSelectorOrNull(
+      page,
+      signInFormSelector
     );
+    if (!signInFormHandler) {
+      throw new Error("페이지를 확인할 수 없습니다.");
+    }
+
+    /*아이디와 패스워드를 사람처럼 보이기위함 50ms 간격으로 타이핑한다.*/
+    for (const char of auth.id.split("")) {
+      await page.type(`${signInFormSelector} ${idInputSelector}`, char);
+      await waitFor(50);
+    }
+    for (const char of auth.password.split("")) {
+      await page.type(`${signInFormSelector} ${passwordInputSelector}`, char);
+      await waitFor(50);
+    }
+    await page.click(signInBtnSelector);
+
+    //https://www.instagram.com/api/v1/web/accounts/login/ajax/
+    /*403 - login failed 200 - login success*/
+    const response = (await (
+      await page.waitForResponse(
+        (res) =>
+          res
+            .url()
+            .includes(
+              "https://www.instagram.com/api/v1/web/accounts/login/ajax"
+            ),
+        { timeout: 3000 }
+      )
+    ).json()) as InstagramSignInResponse;
+
     await page.close();
     await browser.close();
-    return { status: SUCCESS };
+    return response;
   } catch (e) {
-    return { status: BAD_REQUEST, error: e.message };
+    return { authenticated: false };
   }
 };

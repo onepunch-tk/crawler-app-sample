@@ -19,10 +19,14 @@ export function InstaAuth() {
     if (!id) return;
     if (!password) return;
     setLoading(true);
-    const result = await electron.instagramApi.signIn({ id, password });
+    const { authenticated, userId } = await electron.instagramApi.signIn({
+      id,
+      password,
+    });
     //setInstaAuth({ id, password });
-    console.log(result);
-    setTimeout(() => setLoading(false), 2000);
+    if (authenticated) {
+      setInstaAuth(userId);
+    }
   };
   return (
     <CardWrapper>

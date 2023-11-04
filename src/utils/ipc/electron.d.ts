@@ -1,6 +1,6 @@
 type Electron = {
   instagramApi: {
-    signIn: (auth: SignInType) => Promise<InstagramDefaultResponse>;
+    signIn: (auth: SignInType) => Promise<InstagramSignInResponse>;
   };
 };
 

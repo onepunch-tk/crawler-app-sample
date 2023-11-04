@@ -1,20 +1,15 @@
 import { atom } from "recoil";
 
-type InstagramAuthType = {
-  id: string;
-  password: string;
-};
 const InstagramAuthKey = "instaAuth";
-export const instagramAuthState = atom<InstagramAuthType>({
+export const instagramAuthState = atom<string>({
   key: "instagramAuthState",
-  default: JSON.parse(localStorage.getItem(InstagramAuthKey)),
+  default: localStorage.getItem(InstagramAuthKey),
   effects: [
     ({ onSet }) => {
-      onSet((newAuth) => {
+      onSet((newUserId) => {
         localStorage.removeItem(InstagramAuthKey);
-        if (!newAuth.id) return;
-        console.log(newAuth);
-        localStorage.setItem(InstagramAuthKey, JSON.stringify(newAuth));
+        if (!newUserId) return;
+        localStorage.setItem(InstagramAuthKey, newUserId);
       });
     },
   ],

@@ -5,7 +5,13 @@ import AnonymizeUAPlugin from "puppeteer-extra-plugin-anonymize-ua";
 /*resolve vite.main.config 에서 사전에 로드한다. */
 import AdBlockerPlugin from "puppeteer-extra-plugin-adblocker";
 import BlockResourcePlugin from "puppeteer-extra-plugin-block-resources";
-import { Browser, Permission, ResourceType } from "puppeteer";
+import {
+  Browser,
+  ElementHandle,
+  Page,
+  Permission,
+  ResourceType,
+} from "puppeteer";
 import path from "path";
 
 type ChromiumCommandType =
@@ -28,6 +34,8 @@ type BrowserProps = {
     permissions: Permission[];
   };
 };
+// @ts-ignore
+const { VITE_NODE_ENV } = import.meta.env;
 const createBrowser = async ({
   headless,
   commands,
@@ -47,10 +55,14 @@ const createBrowser = async ({
   blockResources.forEach((blockType) => {
     blockResourcePlugin.blockedTypes.add(blockType);
   });
-  const args = [
-    ...commands,
-    `--user-data-dir=${path.join(__dirname, `${dirName}-user-data-dir`)}`,
-  ];
+  const userDataDir =
+    VITE_NODE_ENV === "prod"
+      ? `--user-data-dir=${path.join(__dirname, `${dirName}-user-data-dir`)}`
+      : `--user-data-dir=${path.resolve(
+          "./src/__dev__",
+          `${dirName}-user-data-dir`
+        )}`;
+  const args = [...commands, userDataDir];
   const browser = await puppeteer.launch({
     headless,
     args,
@@ -80,4 +92,18 @@ const getPage = async (browser: Browser, headless: HeadlessType) => {
 const waitFor = async (ms: number) =>
   new Promise((resolve) => setTimeout(resolve, ms));
 
-export { createBrowser, getPage, waitFor };
+const waitForSelectorOrNull = async (
+  parentHandler: Page | ElementHandle,
+  selector: string,
+  timeout?: 2000
+) => {
+  try {
+    return await parentHandler.waitForSelector(selector, {
+      timeout,
+    });
+  } catch (e) {
+    return null;
+  }
+};
+
+export { createBrowser, getPage, waitFor, waitForSelectorOrNull };

@@ -1,9 +1,6 @@
 #user-data-dir
-**/*/user-data-dir
-**/*/insta-user-data-dir
-**/*/ytb-user-data-dir
-**/*/coupang-user-data-dir
-**/*/naver-user-data-dir
+src/__dev__
+
 # Logs
 logs
 *.log
