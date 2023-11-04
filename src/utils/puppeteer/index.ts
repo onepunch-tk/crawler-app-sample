@@ -106,4 +106,29 @@ const waitForSelectorOrNull = async (
   }
 };
 
-export { createBrowser, getPage, waitFor, waitForSelectorOrNull };
+const waitForResponseOrNull = async (
+  page: Page,
+  url: string,
+  status?: number,
+  timeout?: number
+) => {
+  try {
+    return await page.waitForResponse(
+      (res) =>
+        status
+          ? res.url().includes(url) && res.status() === status
+          : res.url().includes(url),
+      { ...(timeout ? { timeout } : { timeout: 5000 }) }
+    );
+  } catch (e) {
+    return null;
+  }
+};
+
+export {
+  createBrowser,
+  getPage,
+  waitFor,
+  waitForSelectorOrNull,
+  waitForResponseOrNull,
+};

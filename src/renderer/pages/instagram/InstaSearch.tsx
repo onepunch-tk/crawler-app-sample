@@ -53,9 +53,12 @@ export function InstaSearch() {
       </CardInputWrapper>
       <CardSubmit
         loading={loading}
-        onSubmitHandler={() => {
+        onSubmitHandler={async () => {
           setLoading(true);
-          console.log(pageCount);
+          await electron.instagramApi.hashtagCrawl({
+            hashtag: "tktk",
+            page: 5,
+          });
           setTimeout(() => setLoading(false), 2000);
         }}
         content="스크래핑 시작"

@@ -54,19 +54,22 @@ export const instagramSignIn = async (
     /*403 - login failed 200 - login success*/
     const response = (await (
       await page.waitForResponse(
-        (res) =>
-          res
+        (res) => {
+          console.log(res.url(), res.status());
+          return res
             .url()
             .includes(
               "https://www.instagram.com/api/v1/web/accounts/login/ajax"
-            ),
-        { timeout: 3000 }
+            );
+        },
+        { timeout: 5000 }
       )
     ).json()) as InstagramSignInResponse;
     await page.close();
     await browser.close();
     return response;
   } catch (e) {
+    console.error(e);
     return { authenticated: false };
   }
 };
