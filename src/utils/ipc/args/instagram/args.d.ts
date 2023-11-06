@@ -3,7 +3,7 @@ interface SignInType {
   password: string;
 }
 
-interface HashtagCrawlType {
+interface HashtagSearchType {
   hashtag: string;
-  page: number;
+  pageCount: number;
 }

@@ -1,4 +1,4 @@
-import { Fragment, memo, useEffect, useState } from "react";
+import { Fragment, memo, useState } from "react";
 import { cls } from "@utils/classnames";
 import { SidebarMenuType } from "@renderer/types";
 import { Link } from "react-router-dom";
@@ -9,9 +9,6 @@ type SidebarProps = {
 
 export const Sidebar = memo(function Sidebar({ menuList }: SidebarProps) {
   const [hidden, setHidden] = useState<boolean>(true);
-  useEffect(() => {
-    console.log("sidebar");
-  }, [menuList]);
   return (
     <Fragment>
       <section

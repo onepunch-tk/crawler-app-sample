@@ -11,7 +11,7 @@ import {
 } from "@components/section-card";
 import { useSetRecoilState } from "recoil";
 import { instagramAuthState } from "@recoil/instagram/atoms";
-import { ERROR, STATUS } from "@utils/ipc/responses/instagram/response-type";
+import { STATUS } from "@utils/ipc/responses/instagram/response-type";
 
 const pageList: ITemType[] = [
   { id: "0", content: "1" },
@@ -22,7 +22,7 @@ const pageList: ITemType[] = [
 ];
 
 export function InstaSearch() {
-  const [pageCount, setPageCount] = useState<ITemType>(pageList[0]);
+  const [selectedItem, setSelectedItem] = useState<ITemType>(pageList[0]);
   const [hashtag, setHashtag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const setAuthUser = useSetRecoilState(instagramAuthState);
@@ -32,6 +32,24 @@ export function InstaSearch() {
       return;
     }
     setHashtag(hashtagText);
+  };
+
+  const onSearchingHandler = async () => {
+    if (!hashtag) return;
+
+    setLoading(true);
+    const pageCount = parseInt(selectedItem.content);
+    const { status, urls, error } =
+      await electron.instagramApi.getHashtagPageList({
+        hashtag,
+        pageCount,
+      });
+    if (status === STATUS.FAILURE) {
+      console.error(error);
+      setLoading(false);
+    }
+    console.log(urls);
+    window.open(urls[0]);
   };
 
   return (
@@ -52,29 +70,14 @@ export function InstaSearch() {
         <CardInputTitle inputTitle="페이지 수" />
         <CardSelect
           loading={loading}
-          selectedItem={pageCount}
+          selectedItem={selectedItem}
           itemList={pageList}
-          onSelectedHandler={setPageCount}
+          onSelectedHandler={setSelectedItem}
         />
       </CardInputWrapper>
       <CardSubmit
         loading={loading}
-        onSubmitHandler={async () => {
-          setLoading(true);
-          const { status, error, results } =
-            await electron.instagramApi.hashtagCrawl({
-              hashtag: "tktk",
-              page: 5,
-            });
-          if (status === STATUS.SUCCESS) {
-            console.log("test");
-          } else {
-            if (error === ERROR.UNAUTHENTICATED) {
-              setAuthUser("");
-            }
-          }
-          setTimeout(() => setLoading(false), 2000);
-        }}
+        onSubmitHandler={onSearchingHandler}
         content="Start"
         subContent="Crawling"
       />

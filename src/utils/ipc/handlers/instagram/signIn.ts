@@ -13,7 +13,7 @@ const signInBtnSelector = "button[type=submit]";
 export const instagramSignIn = async (
   e: Electron.IpcMainInvokeEvent,
   auth: SignInType
-): Promise<InstagramSignInResponse> => {
+): Promise<SignInResponse> => {
   try {
     const browser = await createBrowser({
       headless: false,
@@ -64,7 +64,7 @@ export const instagramSignIn = async (
         },
         { timeout: 5000 }
       )
-    ).json()) as InstagramSignInResponse;
+    ).json()) as SignInResponse;
     await page.close();
     await browser.close();
     return response;

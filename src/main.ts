@@ -1,11 +1,11 @@
 import { app, BrowserWindow, ipcMain, Menu } from "electron";
 import path from "path";
 import {
-  CHANNEL_INSTAGRAM_HASHTAG,
+  CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST,
   CHANNEL_INSTAGRAM_SIGNIN,
 } from "@utils/ipc/constants";
 import { instagramSignIn } from "@handlers/instagram/signIn";
-import { hashtagCrawler } from "@handlers/instagram/hashtag-crawler";
+import { hashtagPageList } from "@handlers/instagram/hashtagPageList";
 
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -49,4 +49,4 @@ app.on("activate", () => {
 });
 
 ipcMain.handle(CHANNEL_INSTAGRAM_SIGNIN, instagramSignIn);
-ipcMain.handle(CHANNEL_INSTAGRAM_HASHTAG, hashtagCrawler);
+ipcMain.handle(CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST, hashtagPageList);

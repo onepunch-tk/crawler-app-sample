@@ -95,11 +95,11 @@ const waitFor = async (ms: number) =>
 const waitForSelectorOrNull = async (
   parentHandler: Page | ElementHandle,
   selector: string,
-  timeout?: 2000
+  timeout?: number
 ) => {
   try {
     return await parentHandler.waitForSelector(selector, {
-      timeout,
+      ...(timeout ? { timeout } : { timeout: 2000 }),
     });
   } catch (e) {
     return null;
@@ -125,10 +125,22 @@ const waitForResponseOrNull = async (
   }
 };
 
+const waitTypingValueForInput = async (
+  inputHandler: ElementHandle,
+  value: string,
+  ms?: number
+) => {
+  for (const char of value.split("")) {
+    await inputHandler.type(char);
+    await waitFor(ms ? ms : 50);
+  }
+};
+
 export {
   createBrowser,
   getPage,
   waitFor,
   waitForSelectorOrNull,
   waitForResponseOrNull,
+  waitTypingValueForInput,
 };
