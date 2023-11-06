@@ -24,3 +24,8 @@ export type SvgContainerSizeType = {
   w?: "w-4" | "w-5" | "w-6" | "w-7" | "w-8";
   h?: "h-4" | "h-5" | "h-6" | "h-7" | "h-8";
 };
+
+export type SidebarMenuType = {
+  title: string;
+  path: string;
+};
