@@ -3,11 +3,12 @@ import {
   getPage,
   waitForResponseOrNull,
 } from "@utils/puppeteer";
+import { ERROR, STATUS } from "@utils/ipc/responses/instagram/response-type";
 
 export const hashtagCrawler = async (
   e: Electron.IpcMainInvokeEvent,
   auth: SignInType
-): Promise<any> => {
+): Promise<InstagramCrawlResponse> => {
   try {
     const browser = await createBrowser({
       headless: false,
@@ -29,13 +30,21 @@ export const hashtagCrawler = async (
       200,
       2000
     );
+    const response: InstagramCrawlResponse = {
+      status: STATUS.SUCCESS,
+    };
     if (landingResponse) {
-      console.log("다시 로그인");
+      response.status = STATUS.FAILURE;
+      response.error = ERROR.UNAUTHENTICATED;
     } else {
-      console.log("crawling!!");
+      response.results = [];
     }
-    return;
+
+    await page.close();
+    await browser.close();
+    return response;
   } catch (e) {
     console.error(e);
+    return { status: STATUS.FAILURE, error: ERROR.BAD_REQUEST };
   }
 };

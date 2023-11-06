@@ -7,11 +7,13 @@ function ItemWrapper({ children }: PropsWithChildren) {
 }
 
 type CardSelectProps = {
+  loading: boolean;
   selectedItem: ITemType;
   itemList: ITemType[];
   onSelectedHandler: React.Dispatch<React.SetStateAction<ITemType>>;
 };
 export function CardSelect({
+  loading,
   selectedItem,
   itemList,
   onSelectedHandler,
@@ -19,6 +21,9 @@ export function CardSelect({
   const listRef = useRef<HTMLUListElement>(null);
   const listViewerRef = useRef<HTMLButtonElement>(null);
   const onListVisibleHandler = (visible: boolean) => {
+    if (loading) {
+      return;
+    }
     const defaultCls =
       "absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-neutral-400 dark:bg-neutral-700 py-1 shadow-box dark:shadow-box-dark ring-1 ring-neutral-400 dark:ring-neutral-700 text-sm transition-opacity duration-300 ease-in-out";
     const opacity = "opacity-100";

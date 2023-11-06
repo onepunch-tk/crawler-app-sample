@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld(API_ELECTRON, {
   instagramApi: {
     signIn: (auth: SignInType): Promise<InstagramSignInResponse> =>
       ipcRenderer.invoke(CHANNEL_INSTAGRAM_SIGNIN, auth),
-    hashtagCrawl: (crawl: HashtagCrawlType): Promise<any> =>
+    hashtagCrawl: (crawl: HashtagCrawlType): Promise<InstagramCrawlResponse> =>
       ipcRenderer.invoke(CHANNEL_INSTAGRAM_HASHTAG, crawl),
   },
 });

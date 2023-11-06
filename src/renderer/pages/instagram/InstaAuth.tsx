@@ -34,6 +34,7 @@ export function InstaAuth() {
       <CardInputWrapper>
         <CardInputTitle inputTitle="ID" />
         <CardInputText
+          isDisabled={loading}
           onChangeHandler={(e: ChangeEvent<HTMLInputElement>) =>
             setId(e.currentTarget.value)
           }
@@ -45,6 +46,7 @@ export function InstaAuth() {
       <CardInputWrapper>
         <CardInputTitle inputTitle="해쉬태그" />
         <CardInputText
+          isDisabled={loading}
           onChangeHandler={(e: ChangeEvent<HTMLInputElement>) =>
             setPassword(e.currentTarget.value)
           }
@@ -57,7 +59,7 @@ export function InstaAuth() {
         loading={loading}
         onSubmitHandler={onSignInHandler}
         content="Sign in"
-        subContent="Loading..."
+        subContent="Loading"
       />
     </CardWrapper>
   );

@@ -10,6 +10,7 @@ type CardInputProps = {
   value: string;
   placeholder: string;
   inputType: HTMLInputTypeAttribute;
+  isDisabled: boolean;
   symbol?: string;
 };
 export function CardInputText({
@@ -18,6 +19,7 @@ export function CardInputText({
   placeholder,
   inputType,
   symbol,
+  isDisabled,
 }: CardInputProps) {
   return (
     <Fragment>
@@ -28,6 +30,7 @@ export function CardInputText({
           </div>
         ) : null}
         <input
+          disabled={isDisabled}
           onChange={onChangeHandler}
           value={value}
           type={inputType}

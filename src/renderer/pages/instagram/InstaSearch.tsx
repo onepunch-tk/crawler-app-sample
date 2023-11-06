@@ -9,6 +9,9 @@ import {
   CardWrapper,
   ITemType,
 } from "@components/section-card";
+import { useSetRecoilState } from "recoil";
+import { instagramAuthState } from "@recoil/instagram/atoms";
+import { ERROR, STATUS } from "@utils/ipc/responses/instagram/response-type";
 
 const pageList: ITemType[] = [
   { id: "0", content: "1" },
@@ -22,6 +25,7 @@ export function InstaSearch() {
   const [pageCount, setPageCount] = useState<ITemType>(pageList[0]);
   const [hashtag, setHashtag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
+  const setAuthUser = useSetRecoilState(instagramAuthState);
   const onHashtagInputHandler = (e: ChangeEvent<HTMLInputElement>) => {
     const hashtagText = e.currentTarget.value;
     if (hashtagText.includes("#")) {
@@ -36,6 +40,7 @@ export function InstaSearch() {
       <CardInputWrapper>
         <CardInputTitle inputTitle="해쉬태그" />
         <CardInputText
+          isDisabled={loading}
           onChangeHandler={onHashtagInputHandler}
           value={hashtag}
           placeholder="Hashtag..."
@@ -46,6 +51,7 @@ export function InstaSearch() {
       <CardInputWrapper>
         <CardInputTitle inputTitle="페이지 수" />
         <CardSelect
+          loading={loading}
           selectedItem={pageCount}
           itemList={pageList}
           onSelectedHandler={setPageCount}
@@ -55,14 +61,22 @@ export function InstaSearch() {
         loading={loading}
         onSubmitHandler={async () => {
           setLoading(true);
-          await electron.instagramApi.hashtagCrawl({
-            hashtag: "tktk",
-            page: 5,
-          });
+          const { status, error, results } =
+            await electron.instagramApi.hashtagCrawl({
+              hashtag: "tktk",
+              page: 5,
+            });
+          if (status === STATUS.SUCCESS) {
+            console.log("test");
+          } else {
+            if (error === ERROR.UNAUTHENTICATED) {
+              setAuthUser("");
+            }
+          }
           setTimeout(() => setLoading(false), 2000);
         }}
-        content="스크래핑 시작"
-        subContent="Loading..."
+        content="Start"
+        subContent="Crawling"
       />
     </CardWrapper>
   );
