@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
 import { Navbar } from "@components/navbar";
-import { Fragment } from "react";
+import { Sidebar } from "@components/sidebar/Sidebar";
 
 export function Root() {
   return (
-    <Fragment>
+    <div className="relative">
       <Navbar />
+      <Sidebar />
       <Outlet />
-    </Fragment>
+    </div>
   );
 }

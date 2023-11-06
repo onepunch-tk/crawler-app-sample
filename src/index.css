@@ -20,7 +20,7 @@
 
     /*dark theme*/
     .dark-theme {
-        @apply text-primary-dark bg-neutral-900 transition-colors duration-500
+        @apply text-primary-dark bg-neutral-800 transition-colors duration-500
     }
     /*text-dark*/
     .text-primary-dark {
@@ -34,7 +34,7 @@
         @apply bg-neutral-700 bg-opacity-70
     }
     .shadow-box-dark {
-        @apply shadow-neutral-950 shadow-md
+        @apply shadow-black shadow-md
     }
     /*btn-dark*/
     .btn-dark {
@@ -82,6 +82,14 @@
     }
     .accent-btn-teal {
         @apply accent-bg-teal accent-btn-common
+    }
+}
+@layer utilities {
+    .shadow-right {
+        box-shadow: 4px 0px 6px -1px #a3a3a3;
+    }
+    .shadow-right-dark {
+        box-shadow: 4px 0px 6px -1px #0a0a0a;
     }
 }
 
