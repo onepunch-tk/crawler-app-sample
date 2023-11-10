@@ -17,7 +17,7 @@ export const router = createHashRouter([
         children: [
           {
             index: true,
-            element: <Navigate to={HOME_ROUTES.INSTAGRAM} replace />,
+            element: <Navigate to={HOME_ROUTES.COUPANG} replace />,
           },
           {
             path: HOME_ROUTES.INSTAGRAM,
