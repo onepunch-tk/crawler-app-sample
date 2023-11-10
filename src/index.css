@@ -41,7 +41,6 @@
         @apply box-dark-bg text-primary-dark btn-effect
     }
 
-
     /*light theme*/
     .light-theme {
         @apply bg-neutral-50 text-primary transition-colors duration-500
@@ -55,7 +54,7 @@
     }
     /*box-default-light*/
     .box-light-bg {
-        @apply bg-neutral-400 bg-opacity-70
+        @apply bg-neutral-200
     }
     .shadow-box {
         @apply shadow-neutral-400 shadow-md

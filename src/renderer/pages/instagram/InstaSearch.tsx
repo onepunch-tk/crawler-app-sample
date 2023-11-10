@@ -7,13 +7,13 @@ import {
   CardSubmit,
   CardTitle,
   CardWrapper,
-  ITemType,
+  ItemType,
 } from "@components/section-card";
 import { useSetRecoilState } from "recoil";
 import { instagramAuthState } from "@recoil/instagram/atoms";
 import { ERROR, STATUS } from "@utils/ipc/responses/instagram/response-type";
 
-const pageList: ITemType[] = [
+const pageList: ItemType[] = [
   { id: "0", content: "1" },
   { id: "1", content: "2" },
   { id: "2", content: "3" },
@@ -22,7 +22,7 @@ const pageList: ITemType[] = [
 ];
 
 export function InstaSearch() {
-  const [selectedItem, setSelectedItem] = useState<ITemType>(pageList[0]);
+  const [selectedItem, setSelectedItem] = useState<ItemType>(pageList[0]);
   const [hashtag, setHashtag] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const setAuthUser = useSetRecoilState(instagramAuthState);

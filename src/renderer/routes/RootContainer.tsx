@@ -3,7 +3,7 @@ import { Root } from "@routes/Root";
 import { Home } from "@pages/Home";
 import { HOME_ROUTES, INSTAGRAM_ROUTES } from "@routes/constants";
 import { Youtube } from "@pages/Youtube";
-import { Coupang } from "@pages/Coupang";
+import { Coupang } from "@pages/coupang";
 import { Naver } from "@pages/Naver";
 import { Instagram, InstaSearch } from "@pages/instagram";
 

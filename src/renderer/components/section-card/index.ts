@@ -6,7 +6,7 @@ import { CardSubmit } from "./CardSubmit";
 import { CardTitle } from "./CardTitle";
 import { CardWrapper } from "./CardWrapper";
 
-type ITemType = {
+type ItemType = {
   id: string;
   content: string;
 };
@@ -19,5 +19,5 @@ export {
   CardInputTitle,
   CardSelect,
   CardSubmit,
-  ITemType,
+  ItemType,
 };

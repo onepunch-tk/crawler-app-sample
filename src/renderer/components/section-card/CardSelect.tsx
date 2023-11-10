@@ -1,6 +1,6 @@
 import { cls } from "@utils/classnames";
 import React, { PropsWithChildren, useRef } from "react";
-import { ITemType } from "@components/section-card/index";
+import { ItemType } from "@components/section-card/index";
 
 function ItemWrapper({ children }: PropsWithChildren) {
   return <div className="flex items-center space-x-5 w-8">{children}</div>;
@@ -8,9 +8,9 @@ function ItemWrapper({ children }: PropsWithChildren) {
 
 type CardSelectProps = {
   loading: boolean;
-  selectedItem: ITemType;
-  itemList: ITemType[];
-  onSelectedHandler: React.Dispatch<React.SetStateAction<ITemType>>;
+  selectedItem: ItemType;
+  itemList: ItemType[];
+  onSelectedHandler: React.Dispatch<React.SetStateAction<ItemType>>;
 };
 export function CardSelect({
   loading,
