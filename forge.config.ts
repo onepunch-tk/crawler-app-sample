@@ -30,6 +30,11 @@ const config: ForgeConfig = {
           entry: "src/preload.ts",
           config: "vite.preload.config.ts",
         },
+        {
+          entry: "src/workers/instagram/post_worker.ts",
+
+          config: "vite.main.config.ts",
+        },
       ],
       renderer: [
         {

@@ -4,6 +4,10 @@ type Electron = {
     getHashtagPageList: (
       hashtagPageInfo: HashtagSearchType
     ) => Promise<HashtagPageListResponse>;
+    getPostInfoList: (urls: string[]) => Promise<void>;
+    onTestMessage: (
+      callback: (e: Electron.IpcRendererEvent, value: string) => void
+    ) => void;
   };
 };
 

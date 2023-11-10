@@ -4,15 +4,16 @@ import {
   waitForResponseOrNull,
   waitForSelectorOrNull,
   waitTypingValueForInput,
-} from "@utils/puppeteer";
+} from "@utils/puppeteer/utils";
 import { ERROR, STATUS } from "@utils/ipc/responses/instagram/response-type";
-import { Browser, Page } from "puppeteer";
+import {
+  Browser,
+  Page,
+} from "puppeteer"; /*----------------------selector------------------------------*/
 
 /*----------------------selector------------------------------*/
 const searchIconSelector = "svg:is([aria-label^=검색],[aria-label^=Search])";
 const searchInputSelector = "input:is([aria-label^=검색],[aria-label^=Search])"; //분명 바뀐다... 체크해야함
-const searchClearIconSelector =
-  "div:is([aria-label^=검색란],[aria-label^=Clear])";
 const hashtagPageListSelector = ".x9f619.xocp1fn a";
 /*------------------------------------------------------------*/
 
@@ -29,7 +30,7 @@ const throwFailure = async (
   return { status: STATUS.FAILURE, error };
 };
 
-export const hashtagPageList = async (
+export const hashtagPageListHandler = async (
   e: Electron.IpcMainInvokeEvent,
   { hashtag, pageCount }: HashtagSearchType
 ): Promise<HashtagPageListResponse> => {

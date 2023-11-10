@@ -8,6 +8,7 @@
     "noImplicitAny": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "allowSyntheticDefaultImports": true,
     "paths": {
       "@/*": ["src/*"],
       "@utils/*": ["src/utils/*"],

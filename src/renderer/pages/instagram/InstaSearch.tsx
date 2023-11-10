@@ -11,7 +11,7 @@ import {
 } from "@components/section-card";
 import { useSetRecoilState } from "recoil";
 import { instagramAuthState } from "@recoil/instagram/atoms";
-import { STATUS } from "@utils/ipc/responses/instagram/response-type";
+import { ERROR, STATUS } from "@utils/ipc/responses/instagram/response-type";
 
 const pageList: ITemType[] = [
   { id: "0", content: "1" },
@@ -38,18 +38,21 @@ export function InstaSearch() {
     if (!hashtag) return;
 
     setLoading(true);
+
     const pageCount = parseInt(selectedItem.content);
     const { status, urls, error } =
       await electron.instagramApi.getHashtagPageList({
         hashtag,
         pageCount,
       });
+
     if (status === STATUS.FAILURE) {
-      console.error(error);
+      if (error === ERROR.UNAUTHENTICATED) {
+        setAuthUser("");
+      }
       setLoading(false);
+      return;
     }
-    console.log(urls);
-    window.open(urls[0]);
   };
 
   return (

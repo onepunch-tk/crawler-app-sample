@@ -3,7 +3,7 @@ import {
   getPage,
   waitFor,
   waitForSelectorOrNull,
-} from "@utils/puppeteer";
+} from "@utils/puppeteer/utils";
 
 const signInFormSelector = "form#loginForm";
 const idInputSelector = "input[name=username]";

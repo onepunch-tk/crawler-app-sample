@@ -2,10 +2,14 @@ import { app, BrowserWindow, ipcMain, Menu } from "electron";
 import path from "path";
 import {
   CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST,
+  CHANNEL_INSTAGRAM_POST_LIST,
   CHANNEL_INSTAGRAM_SIGNIN,
 } from "@utils/ipc/constants";
-import { instagramSignIn } from "@handlers/instagram/signIn";
-import { hashtagPageList } from "@handlers/instagram/hashtagPageList";
+import {
+  hashtagPageListHandler,
+  instagramSignIn,
+  postInfoHandler,
+} from "@handlers/instagram";
 
 if (require("electron-squirrel-startup")) {
   app.quit();
@@ -20,7 +24,6 @@ const createWindow = () => {
       nodeIntegrationInWorker: true,
     },
   });
-
   const menu = new Menu();
   Menu.setApplicationMenu(menu);
 
@@ -49,4 +52,5 @@ app.on("activate", () => {
 });
 
 ipcMain.handle(CHANNEL_INSTAGRAM_SIGNIN, instagramSignIn);
-ipcMain.handle(CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST, hashtagPageList);
+ipcMain.handle(CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST, hashtagPageListHandler);
+ipcMain.handle(CHANNEL_INSTAGRAM_POST_LIST, postInfoHandler);
