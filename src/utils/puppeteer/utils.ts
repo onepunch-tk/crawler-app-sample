@@ -114,10 +114,12 @@ const waitForResponseOrNull = async (
 ) => {
   try {
     return await page.waitForResponse(
-      (res) =>
-        status
+      (res) => {
+        console.log(res.url(), res.status());
+        return status
           ? res.url().includes(url) && res.status() === status
-          : res.url().includes(url),
+          : res.url().includes(url);
+      },
       { ...(timeout ? { timeout } : { timeout: 5000 }) }
     );
   } catch (e) {

@@ -1,6 +1,7 @@
 import { contextBridge, ipcRenderer } from "electron";
 import {
   API_ELECTRON,
+  CHANNEL_COUPANG_CATEGORIES,
   CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST,
   CHANNEL_INSTAGRAM_POST_LIST,
   CHANNEL_INSTAGRAM_SIGNIN,
@@ -19,5 +20,9 @@ contextBridge.exposeInMainWorld(API_ELECTRON, {
     onTestMessage: (
       callback: (e: Electron.IpcRendererEvent, value: string) => void
     ) => ipcRenderer.once("TEST", callback),
+  },
+  coupangApi: {
+    categories: (): Promise<CoupangCategoriesResponse> =>
+      ipcRenderer.invoke(CHANNEL_COUPANG_CATEGORIES),
   },
 });

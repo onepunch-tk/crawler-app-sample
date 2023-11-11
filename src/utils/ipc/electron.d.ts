@@ -9,6 +9,9 @@ type Electron = {
       callback: (e: Electron.IpcRendererEvent, value: string) => void
     ) => void;
   };
+  coupangApi: {
+    categories: () => Promise<CoupangCategoriesResponse>;
+  };
 };
 
 declare let electron: Electron;

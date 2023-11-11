@@ -1,12 +1,18 @@
 import { PropsWithChildren } from "react";
+import { cls } from "@utils/classnames";
 
-// type CardWrapperProps = {
-//   height:
-// }
+type CardWrapperProps = PropsWithChildren & {
+  width?: string;
+};
 
-export function CardWrapper({ children }: PropsWithChildren) {
+export function CardWrapper({ children, width }: CardWrapperProps) {
   return (
-    <section className="flex-box-col-center box-light-bg dark:box-dark-bg w-1/2 min-w-[350px] rounded-md p-10 shadow-box dark:shadow-box-dark transition-[border-color,box-shadow] duration-300">
+    <section
+      className={cls(
+        "flex-box-col-center box-light-bg dark:box-dark-bg  min-w-[350px] rounded-md p-10 shadow-box dark:shadow-box-dark transition-[border-color,box-shadow] duration-300",
+        width
+      )}
+    >
       {children}
     </section>
   );
