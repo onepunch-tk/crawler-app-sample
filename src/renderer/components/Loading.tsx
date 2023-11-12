@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { cls } from "@utils/classnames";
 import { Spinner } from "@components/Spinner";
 import {
@@ -23,20 +22,18 @@ export function Loading({
   containerBg = "bg-blue-500",
 }: ILoadingProps) {
   return (
-    <Fragment>
-      <main className="fixed flex-box-col-center w-full h-full box-light-bg dark:box-dark-bg bg-opacity-60">
-        <section
-          className={cls(
-            "loading-container flex-box-col-center min-w-[350px] max-w-fit rounded-xl gap-y-6 p-10 shadow-box dark:shadow-box-dark",
-            containerBg
-          )}
-        >
-          <span className="loading-message text-neutral-900 font-bold">
-            {message}
-          </span>
-          <Spinner w={w} h={h} borderColor={borderColor} />
-        </section>
-      </main>
-    </Fragment>
+    <main className="fixed top-0 flex-box-col-center w-full h-full box-light-bg dark:box-dark-bg bg-opacity-60">
+      <section
+        className={cls(
+          "loading-container flex-box-col-center min-w-[350px] max-w-fit rounded-xl gap-y-6 p-10 shadow-box dark:shadow-box-dark",
+          containerBg
+        )}
+      >
+        <span className="loading-message text-neutral-900 font-bold">
+          {message}
+        </span>
+        <Spinner w={w} h={h} borderColor={borderColor} />
+      </section>
+    </main>
   );
 }

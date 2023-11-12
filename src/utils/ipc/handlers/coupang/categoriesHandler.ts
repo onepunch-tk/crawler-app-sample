@@ -137,7 +137,10 @@ const getCategories = async <
             DEPTH.SECOND
           );
           secondResult.length
-            ? ((result as CP_FirstDepthCategory).secondDepth = secondResult)
+            ? ((result as CP_FirstDepthCategory).secondDepth =
+                result.content.includes("패션의류")
+                  ? secondResult
+                  : [{ id: "none", content: "none" }, ...secondResult])
             : undefined;
         } else if (DEPTH.SECOND === depth) {
           const thirdDepthList = await handler.$$(".third-depth-list li");
@@ -146,7 +149,10 @@ const getCategories = async <
             DEPTH.THIRD
           );
           thirdResult.length
-            ? ((result as CP_SecondDepthCategory).thirdDepth = thirdResult)
+            ? ((result as CP_SecondDepthCategory).thirdDepth = [
+                { id: "none", content: "none" },
+                ...thirdResult,
+              ])
             : undefined;
         }
         results.push(result);

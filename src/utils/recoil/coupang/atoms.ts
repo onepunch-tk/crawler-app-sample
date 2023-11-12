@@ -1,8 +1,10 @@
 import { atom } from "recoil";
-import { categoriesEffect } from "@recoil/coupang/categoriesEffect";
 
-export const categoriesState = atom<CP_FirstDepthCategory[]>({
+type CP_Category = {
+  init: boolean;
+  categories: CP_FirstDepthCategory[];
+};
+export const categoriesState = atom<CP_Category>({
   key: "cp_categories",
-  default: [],
-  effects_UNSTABLE: [categoriesEffect],
+  default: { init: false, categories: [] },
 });

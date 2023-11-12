@@ -1,18 +1,19 @@
 import React, { MouseEventHandler } from "react";
 import { Spinner } from "@components/Spinner";
+import { useRecoilValue } from "recoil";
+import { workState } from "@recoil/common/atoms";
 
 type CardSubmitProps = {
-  loading: boolean;
   onSubmitHandler: MouseEventHandler;
   content: string;
   subContent: string;
 };
 export function CardSubmit({
-  loading,
   onSubmitHandler,
   content,
   subContent,
 }: CardSubmitProps) {
+  const loading = useRecoilValue(workState);
   return (
     <button
       disabled={loading}

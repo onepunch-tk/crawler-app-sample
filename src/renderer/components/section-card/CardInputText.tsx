@@ -4,13 +4,14 @@ import React, {
   HTMLInputTypeAttribute,
 } from "react";
 import { cls } from "@utils/classnames";
+import { useRecoilValue } from "recoil";
+import { workState } from "@recoil/common/atoms";
 
 type CardInputProps = {
   onChangeHandler: ChangeEventHandler;
   value: string;
   placeholder: string;
   inputType: HTMLInputTypeAttribute;
-  isDisabled: boolean;
   symbol?: string;
 };
 export function CardInputText({
@@ -19,8 +20,8 @@ export function CardInputText({
   placeholder,
   inputType,
   symbol,
-  isDisabled,
 }: CardInputProps) {
+  const loading = useRecoilValue(workState);
   return (
     <Fragment>
       <div className="relative">
@@ -30,7 +31,7 @@ export function CardInputText({
           </div>
         ) : null}
         <input
-          disabled={isDisabled}
+          disabled={loading}
           onChange={onChangeHandler}
           value={value}
           type={inputType}
