@@ -6,3 +6,5 @@ export const CHANNEL_INSTAGRAM_POST_LIST = `${CHANNEL_INSTAGRAM}/postList`;
 
 export const CHANNEL_COUPANG = "coupang";
 export const CHANNEL_COUPANG_CATEGORIES = `${CHANNEL_COUPANG}/categories`;
+export const CHANNEL_COUPANG_PRODUCTS = `${CHANNEL_COUPANG}/products`;
+export const CHANNEL_COUPANG_ON_PRODUCTS = `${CHANNEL_COUPANG}/onProducts`;

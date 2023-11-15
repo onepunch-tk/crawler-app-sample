@@ -1,3 +1,4 @@
-import { categoriesHandler } from "./categoriesHandler";
+import { scrapeCategory } from "./scrapeCategory";
+import { scapeCoupangProducts } from "./scapeCoupangProducts";
 
-export { categoriesHandler };
+export { scrapeCategory, scapeCoupangProducts };

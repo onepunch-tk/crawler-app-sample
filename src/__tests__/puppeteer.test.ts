@@ -45,17 +45,6 @@ afterAll(async () => {
   await browser.close();
 });
 
-type ProductType = {
-  productName: string;
-  img: string;
-  price: string;
-  dcRate?: string;
-  priceBase?: string;
-  rocketDelivery: boolean;
-  starRating: string;
-  ratingTotalCount: string;
-  productUrl: string;
-};
 describe("Coupang 검색 테스트", () => {
   it("should finish search", async () => {
     const keyword = "카라티";
@@ -65,7 +54,7 @@ describe("Coupang 검색 테스트", () => {
     await page.goto(searchUrl);
     await page.waitForNetworkIdle({ idleTime: 100, timeout: 10000 });
     const searchResults = await page.evaluate(() => {
-      const results: ProductType[] = [];
+      const products: CP_ProductType[] = [];
       document.querySelectorAll(".search-product").forEach((liEl) => {
         const productName = liEl.querySelector(".name")?.textContent.trim();
         const price = liEl.querySelector(".price-value")?.textContent.trim();
@@ -89,7 +78,7 @@ describe("Coupang 검색 테스트", () => {
         const productUrl =
           "https://www.coupang.com" +
           liEl.querySelector("a")?.getAttribute("href");
-        results.push({
+        products.push({
           productName,
           price,
           dcRate,
@@ -102,7 +91,7 @@ describe("Coupang 검색 테스트", () => {
         });
       });
 
-      return results;
+      return products;
     });
     console.log(searchResults);
     expect(searchResults.length).toBeGreaterThan(0);

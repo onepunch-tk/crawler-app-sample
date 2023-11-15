@@ -31,7 +31,7 @@
     }
     /*box-default-dark*/
     .box-dark-bg {
-        @apply bg-neutral-700 bg-opacity-70
+        @apply bg-neutral-700
     }
     .shadow-box-dark {
         @apply shadow-black shadow-md

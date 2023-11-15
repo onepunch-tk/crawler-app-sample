@@ -11,6 +11,13 @@ type Electron = {
   };
   coupangApi: {
     categories: () => Promise<CoupangCategoriesResponse>;
+    getProducts: (searchInfo: CP_SearchInfo) => Promise<void>;
+    onProducts: (
+      callBack: (
+        e: Electron.IpcRendererEvent,
+        productsResponse: CoupangProductsResponse
+      ) => void
+    ) => void;
   };
 };
 

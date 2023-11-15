@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain, Menu } from "electron";
 import path from "path";
 import {
   CHANNEL_COUPANG_CATEGORIES,
+  CHANNEL_COUPANG_PRODUCTS,
   CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST,
   CHANNEL_INSTAGRAM_POST_LIST,
   CHANNEL_INSTAGRAM_SIGNIN,
@@ -11,14 +12,14 @@ import {
   instagramSignIn,
   postInfoHandler,
 } from "@handlers/instagram";
-import { categoriesHandler } from "@handlers/coupang";
+import { scapeCoupangProducts, scrapeCategory } from "@handlers/coupang";
 
 if (require("electron-squirrel-startup")) {
   app.quit();
 }
-
+export let mainWindow: BrowserWindow | null = null;
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 1280,
     height: 720,
     webPreferences: {
@@ -30,14 +31,14 @@ const createWindow = () => {
   Menu.setApplicationMenu(menu);
 
   if (MAIN_WINDOW_VITE_DEV_SERVER_URL) {
-    mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
+    mainWindow.webContents.openDevTools();
   } else {
     mainWindow.loadFile(
       path.join(__dirname, `../renderer/${MAIN_WINDOW_VITE_NAME}/index.html`),
       { hash: "/" }
     );
   }
-  mainWindow.webContents.openDevTools();
+  mainWindow.loadURL(MAIN_WINDOW_VITE_DEV_SERVER_URL);
 };
 
 app.on("ready", createWindow);
@@ -56,4 +57,5 @@ app.on("activate", () => {
 ipcMain.handle(CHANNEL_INSTAGRAM_SIGNIN, instagramSignIn);
 ipcMain.handle(CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST, hashtagPageListHandler);
 ipcMain.handle(CHANNEL_INSTAGRAM_POST_LIST, postInfoHandler);
-ipcMain.handle(CHANNEL_COUPANG_CATEGORIES, categoriesHandler);
+ipcMain.handle(CHANNEL_COUPANG_CATEGORIES, scrapeCategory);
+ipcMain.handle(CHANNEL_COUPANG_PRODUCTS, scapeCoupangProducts);

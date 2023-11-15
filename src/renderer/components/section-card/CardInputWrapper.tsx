@@ -1,8 +1,20 @@
 import React, { PropsWithChildren } from "react";
+import { cls } from "@utils/classnames";
 
-export function CardInputWrapper({ children }: PropsWithChildren) {
+type CardInputWrapperProps = {
+  mb?: string;
+};
+export function CardInputWrapper({
+  children,
+  mb,
+}: CardInputWrapperProps & PropsWithChildren) {
   return (
-    <div className="flex w-full justify-items-start items-center h-5 mb-7">
+    <div
+      className={cls(
+        "flex w-full justify-items-start items-center h-5",
+        mb && mb
+      )}
+    >
       {children}
     </div>
   );

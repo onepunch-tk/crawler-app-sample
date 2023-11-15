@@ -1,8 +1,6 @@
 import { cls } from "@utils/classnames";
 import React, { PropsWithChildren, useRef } from "react";
 import { ItemType } from "@components/section-card/index";
-import { useRecoilValue } from "recoil";
-import { workState } from "@recoil/common/atoms";
 
 function ItemWrapper({ children }: PropsWithChildren) {
   return (
@@ -24,12 +22,8 @@ export function CardSelect({
 }: CardSelectProps) {
   const listRef = useRef<HTMLUListElement>(null);
   const listViewerRef = useRef<HTMLButtonElement>(null);
-  const loading = useRecoilValue(workState);
   const currentSelectedItem = selectedItem ? selectedItem : itemList[0];
   const onListVisibleHandler = (visible: boolean) => {
-    if (loading) {
-      return;
-    }
     const defaultCls =
       "absolute z-10 mt-1 max-h-56 w-full overflow-auto rounded-md bg-neutral-400 dark:bg-neutral-700 py-1 shadow-box dark:shadow-box-dark ring-1 ring-neutral-400 dark:ring-neutral-700 text-sm transition-opacity duration-300 ease-in-out";
     const opacity = "opacity-100";
@@ -53,7 +47,7 @@ export function CardSelect({
           <span className="max-w-md whitespace-nowrap overflow-hidden text-ellipsis">
             {currentSelectedItem.content}
           </span>
-          <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2 text-green-700">
+          <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2 text-green-700 dark:text-green-600">
             <svg className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M10 3a.75.75 0 01.55.24l3.25 3.5a.75.75 0 11-1.1 1.02L10 4.852 7.3 7.76a.75.75 0 01-1.1-1.02l3.25-3.5A.75.75 0 0110 3zm-3.76 9.2a.75.75 0 011.06.04l2.7 2.908 2.7-2.908a.75.75 0 111.1 1.02l-3.25 3.5a.75.75 0 01-1.1 0l-3.25-3.5a.75.75 0 01.04-1.06z" />
             </svg>
@@ -84,9 +78,9 @@ export function CardSelect({
               <span className="max-w-md whitespace-nowrap overflow-hidden text-ellipsis">
                 {item.content}
               </span>
-              <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2 text-green-700">
+              <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2">
                 {currentSelectedItem.id === item.id ? (
-                  <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2 text-green-700">
+                  <span className="pointer-events-none absolute inset-y-0 right-0 ml-3 flex items-center pr-2 text-green-700 dark:text-green-600">
                     <svg
                       className="h-5 w-5"
                       viewBox="0 0 20 20"

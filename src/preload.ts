@@ -2,6 +2,8 @@ import { contextBridge, ipcRenderer } from "electron";
 import {
   API_ELECTRON,
   CHANNEL_COUPANG_CATEGORIES,
+  CHANNEL_COUPANG_ON_PRODUCTS,
+  CHANNEL_COUPANG_PRODUCTS,
   CHANNEL_INSTAGRAM_HASHTAG_PAGE_LIST,
   CHANNEL_INSTAGRAM_POST_LIST,
   CHANNEL_INSTAGRAM_SIGNIN,
@@ -24,5 +26,13 @@ contextBridge.exposeInMainWorld(API_ELECTRON, {
   coupangApi: {
     categories: (): Promise<CoupangCategoriesResponse> =>
       ipcRenderer.invoke(CHANNEL_COUPANG_CATEGORIES),
+    getProducts: (searchInfo: CP_SearchInfo): Promise<void> =>
+      ipcRenderer.invoke(CHANNEL_COUPANG_PRODUCTS, searchInfo),
+    onProducts: (
+      callback: (
+        e: Electron.IpcRendererEvent,
+        productsResponse: CoupangProductsResponse
+      ) => void
+    ) => ipcRenderer.once(CHANNEL_COUPANG_ON_PRODUCTS, callback),
   },
 });

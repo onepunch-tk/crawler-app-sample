@@ -31,7 +31,7 @@ const config: ForgeConfig = {
           config: "vite.preload.config.ts",
         },
         {
-          entry: "src/workers/instagram/post_worker.ts",
+          entry: "src/workers/coupang/product_worker.ts",
 
           config: "vite.main.config.ts",
         },

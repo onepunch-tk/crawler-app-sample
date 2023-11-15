@@ -4,7 +4,6 @@ import { createBrowser, getPage, waitFor } from "@puppeteer/utils";
 const postWorker = async () => {
   const { url } = workerData;
   const browser = await createBrowser({
-    headless: false,
     commands: [
       "--disable-notifications",
       "--disable-web-security",
@@ -15,7 +14,7 @@ const postWorker = async () => {
     dirName: "insta",
     blockResources: [],
   });
-  const page = await getPage(browser, false);
+  const page = await getPage(browser);
   await page.goto("https://www.instagram.com/");
   console.log(url);
   await waitFor(2000);

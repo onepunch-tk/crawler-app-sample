@@ -13,7 +13,7 @@ export const Sidebar = memo(function Sidebar({ menuList }: SidebarProps) {
     <Fragment>
       <section
         className={cls(
-          "absolute flex-box-col-center shadow-right dark:shadow-right-dark justify-start box-light-bg dark:box-dark-bg left-0 h-full pt-12 overflow-hidden transition-[width] duration-500",
+          "absolute z-50 flex-box-col-center shadow-right dark:shadow-right-dark justify-start box-light-bg dark:box-dark-bg left-0 h-full pt-12 overflow-hidden transition-[width] duration-500",
           hidden ? "w-0" : "w-52"
         )}
       >

@@ -36,7 +36,6 @@ export const hashtagPageListHandler = async (
 ): Promise<HashtagPageListResponse> => {
   try {
     browser = await createBrowser({
-      headless: false,
       commands: [
         "--disable-notifications",
         "--disable-web-security",
@@ -47,7 +46,7 @@ export const hashtagPageListHandler = async (
       dirName: "insta",
       blockResources: [],
     });
-    page = await getPage(browser, false);
+    page = await getPage(browser);
     await page.goto("https://www.instagram.com/");
     /*log out 상태인지 확인하는 랜딩 response*/
     const landingResponse = await waitForResponseOrNull(

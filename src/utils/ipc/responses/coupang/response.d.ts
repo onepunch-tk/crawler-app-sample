@@ -16,3 +16,19 @@ type CP_FirstDepthCategory = CP_DefaultCategory & {
 type CoupangCategoriesResponse = CoupangDefaultResponse & {
   results?: CP_FirstDepthCategory[];
 };
+
+type CP_ProductType = {
+  productName: string;
+  img: string;
+  price: string;
+  dcRate?: string;
+  priceBase?: string;
+  rocketDelivery: boolean;
+  starRating: string;
+  ratingTotalCount: string;
+  productUrl: string;
+};
+
+type CoupangProductsResponse = CoupangDefaultResponse & {
+  products: CP_ProductType[];
+};
